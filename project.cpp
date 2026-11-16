@@ -1,78 +1,229 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
+
 int main() {
-    int total_belanja, pilihan_kurir, input_kode_premium, ongkir_yang_didapatkan, total;
-    int kode_premium = 7262;
-    int potongan_ongkir_1 = 20000;
-    int potongan_ongkir_2 = 5000;
+    string inputkodepremium;
+    int inputbelanjaan, ongkir, pilihankurir, total, kurir;
+    cout << "masukan kode premium jika ada, jika tidak ada silahkan enter (";
+    cin >> inputkodepremium;
+    cout << "pilih belanjaan anda (ketik 1,2,3,4)\n1. minyak\n2. gula\n3. kopi\n4. garam\n(";
+    cin >> inputbelanjaan;
+    cout << "pilih kurir (ketik 1,2)\n1. kurir kilat\n2. ambil sendiri\n(";
+    cin >> pilihankurir;
+    int s1 = 200000;
+    int s2 = 50000;
     int minyak = 500000;
-    int gula = 300000;
-    int kopi = 200000;
-    int garam = 100000;
-    int masako = 30000;
-    int ongkir_normal = 20000;
-    int kurir_kilat = 10000;
-    int ambil_sendiri = 0;
-    cout << "pilih belanjaan (input nomor belanjaan):\n 1. minyak\n 2. gula\n 3. kopi\n 4. garam\n 5. masako\n: ";
-    cin >> total_belanja;
-    cout << "masukan kode premium jika ada, jika tidak ada masukan tidak ada: ";
-    cin >> input_kode_premium;
-    cout << "pilihan kurir (input nomor):\n 1. kilat\n 2. ambil sendiri\n: ";
-    cin >> pilihan_kurir;
-    
-    switch (total_belanja){
-        
-        // Minyak
-        case 1: if (input_kode_premium == kode_premium){
-            ongkir_yang_didapatkan = ongkir_normal - potongan_ongkir_1;
-            switch (pilihan_kurir){
-                case 1: ongkir_yang_didapatkan + kurir_kilat;
+    bool s1minyak = minyak >= s1;
+    bool s2minyak = minyak > s2 && minyak < s1;
+    int gula = 200000;
+    bool s1gula = gula >= s1;
+    bool s2gula = gula > s2 && gula < s1;
+    int kopi = 100000;
+    bool s1kopi = kopi >= s1;
+    bool s2kopi = kopi > s2 && kopi < s1;
+    int garam = 10000;
+    bool s1garam = garam >= s1;
+    bool s2garam = garam > s2 && garam < s1;
+    bool kodepremium = inputkodepremium == "7262";
+    int ongkirnormal = 20000;
+    switch (inputbelanjaan){
+        case 1: if (kodepremium){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
                 break;
-                case 2: ongkir_yang_didapatkan + ambil_sendiri;
+                case 2: kurir = ongkir + 0;
                 break;
-                default: cout << "kurir tidak dikenal";
-            total = minyak + ongkir_yang_didapatkan;
+                default: cout << "tidak ada pilihan";
+                return 0;
             }
+            total = minyak + kurir;
         }
-        //syarat 1
-        else if (minyak >= 200000){
-            ongkir_yang_didapatkan = ongkir_normal - potongan_ongkir_1;
-            switch (pilihan_kurir){
-                case 1: ongkir_yang_didapatkan + kurir_kilat;
+        else if (s1minyak){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
                 break;
-                case 2: ongkir_yang_didapatkan + ambil_sendiri;
+                case 2: kurir = ongkir + 0;
                 break;
-                default: cout << "kurir tidak dikenal";
-            total = minyak + ongkir_yang_didapatkan;
+                default: cout << "tidak ada pilihan";
+                return 0;
             }
+            total = minyak + kurir;
         }
-        // syarat 2
-        else if (minyak > 50000 && minyak < 200000){
-            ongkir_yang_didapatkan = ongkir_normal - 5000;
-            switch (pilihan_kurir){
-                case 1: ongkir_yang_didapatkan + kurir_kilat;
+        else if (s2minyak){
+            ongkir = ongkirnormal - 5000;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
                 break;
-                case 2: ongkir_yang_didapatkan + ambil_sendiri;
+                case 2: kurir = ongkir + 0;
                 break;
-                default: cout << "kurir tidak dikenal";
-            total = minyak + ongkir_yang_didapatkan;
+                default: cout << "tidak ada pilihan";
+                return 0;
             }
+            total = minyak + kurir;
         }
         else{
-            switch (pilihan_kurir){
-                case 1: ongkir_normal + kurir_kilat;
+            switch (pilihankurir){
+                case 1: kurir = ongkirnormal + 10000;
                 break;
-                case 2: ongkir_normal + ambil_sendiri;
+                case 2: kurir = ongkirnormal + 0;
                 break;
-                default: cout << "kurir tidak dikenal";
-            total = minyak + ongkir_normal;
+                default: cout << "tidak ada pilihan";
+                return 0;
             }
+            total = minyak + kurir;
+        };
+        break;
+        case 2: if (kodepremium){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = gula + kurir;
         }
+        else if (s1gula){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = gula + kurir;
+        }
+        else if (s2gula){
+            ongkir = ongkirnormal - 5000;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = gula + kurir;
+        }
+        else{
+            switch (pilihankurir){
+                case 1: kurir = ongkirnormal + 10000;
+                break;
+                case 2: kurir = ongkirnormal + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = gula + kurir;
+        };
         break;
-        case 2: "belum ada";
+        case 3: if (kodepremium){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = kopi + kurir;
+        }
+        else if (s1kopi){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = kopi + kurir;
+        }
+        else if (s2kopi){
+            ongkir = ongkirnormal - 5000;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = kopi + kurir;
+        }
+        else{
+            switch (pilihankurir){
+                case 1: kurir = ongkirnormal + 10000;
+                break;
+                case 2: kurir = ongkirnormal + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = kopi + kurir;
+        };
         break;
-        default: "barang belanjaan tidak ada";
+        case 4: if (kodepremium){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = garam + kurir;
+        }
+        else if (s1garam){
+            ongkir = ongkirnormal - ongkirnormal;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = garam + kurir;
+        }
+        else if (s2garam){
+            ongkir = ongkirnormal - 5000;
+            switch (pilihankurir){
+                case 1: kurir = ongkir + 10000;
+                break;
+                case 2: kurir = ongkir + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = garam + kurir;
+        }
+        else{
+            switch (pilihankurir){
+                case 1: kurir = ongkirnormal + 10000;
+                break;
+                case 2: kurir = ongkirnormal + 0;
+                break;
+                default: cout << "tidak ada pilihan";
+                return 0;
+            }
+            total = garam + kurir;
+        };
+        break;
+        default: cout << "tidak ada pilihan";
+        return 0;
     }
-    cout << "total : " << total;
+    cout << "total biaya = " << total << endl;
     return 0;
 }
